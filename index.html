@@ -3,467 +3,324 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SAE MNIT</title>
-  <meta name="description" content="SAE MNIT — Society of Automotive Engineers | Tvaran Racing & RavenCrew" />
-  <style>
-    /* === VARIABLES & BASE === */
-    :root{
-      --bg:#0b0f14; /* deep tech background */
-      --panel:#0f1720;
-      --muted:#9aa6b2;
-      --accent-tvaran:#00aef0; /* electric blue */
-      --accent-raven:#9b5cff; /* raven purple */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --max-width:1200px;
-      --gutter:18px;
-      --radius:14px;
-      --easing:cubic-bezier(.2,.9,.3,1);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,174,240,0.04), transparent),
-                  radial-gradient(900px 500px at 90% 90%, rgba(155,92,255,0.03), transparent),
-                  var(--bg);
-      color:#e6eef6; -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:var(--max-width);margin:0 auto;padding:20px}
-
-    /* === HEADER === */
-    header{position:sticky;top:12px;z-index:40;padding:10px 0}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo-circle{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--glass),transparent);display:grid;place-items:center;border:1px solid rgba(255,255,255,0.04);backdrop-filter: blur(6px)}
-    .logo-mark{font-weight:700;font-size:14px;letter-spacing:1px}
-    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
-    nav a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
-    nav a:hover{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);color:#fff}
-
-    /* === HERO === */
-    .hero{min-height:78vh;display:grid;align-items:center}
-    .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
-    .hero-title{font-size:48px;font-weight:800;line-height:1;letter-spacing:-1px;margin:0}
-    .hero-sub{color:var(--muted);margin-top:8px;font-weight:600}
-    .tagline{margin-top:16px;font-weight:600}
-    .type-words{color:var(--accent-tvaran);font-weight:800}
-    .cta-row{margin-top:22px;display:flex;gap:12px}
-    .btn{padding:10px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,var(--accent-tvaran),#52e1ff);color:#04111a}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-
-    /* hero right: preview card */
-    .preview-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
-    .gear-wrap{position:relative;height:320px;overflow:hidden;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));display:flex;align-items:center;justify-content:center}
-    .gear-svg{position:absolute;opacity:0.08}
-
-    /* blueprint overlay */
-    .blueprint{position:absolute;inset:0;pointer-events:none;opacity:0.06;background-image:linear-gradient(#ffffff0a 1px, transparent 1px);background-size:40px 40px;mix-blend-mode:overlay}
-
-    /* === SECTIONS === */
-    section{padding:72px 0}
-    .section-title{font-size:20px;font-weight:800;margin:0 0 18px}
-    .cards{display:flex;gap:18px;flex-wrap:wrap}
-    .card{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-width:220px}
-
-    /* teams */
-    .teams-grid{display:flex;gap:20px;flex-wrap:wrap}
-    .team-card{background:linear-gradient(180deg,var(--glass-2),transparent);padding:18px;border-radius:12px;min-width:260px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:transform .45s var(--easing), box-shadow .45s var(--easing)}
-    .team-card:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .team-logo{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;border:6px solid rgba(255,255,255,0.03)}
-    .team-name{font-weight:800}
-    .team-desc{color:var(--muted);font-weight:600}
-
-    /* team page */
-    .team-page{position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,12,0.97), rgba(1,3,6,0.96));z-index:80;display:none;padding:36px;overflow:auto}
-    .team-inner{max-width:980px;margin:0 auto}
-    .close-team{position:fixed;right:28px;top:26px;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:10px;cursor:pointer}
-    .team-hero{display:flex;align-items:center;gap:18px}
-    .team-accent{height:8px;width:120px;border-radius:10px}
-
-    /* members */
-    .members-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-top:18px}
-    .member{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
-    .member-photo{width:96px;height:96px;border-radius:50%;display:block;margin:0 auto;overflow:hidden;border:6px solid rgba(255,255,255,0.02)}
-    .member-name{margin-top:10px;font-weight:700}
-    .member-role{color:var(--muted);font-weight:600;margin-top:4px}
-
-    /* contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
-    .form input,.form textarea{width:100%;padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.05);color:#dfeafb}
-    .form textarea{min-height:120px}
-
-    /* footer */
-    footer{padding:28px 0;color:var(--muted);border-top:1px dashed rgba(255,255,255,0.02)}
-
-    /* fade-in helper */
-    .reveal{opacity:0;transform:translateY(18px);transition:all .85s var(--easing)}
-    .reveal.visible{opacity:1;transform:none}
-
-    /* small screens */
-    @media (max-width:900px){
-      .hero-inner{grid-template-columns:1fr}
-      nav ul{display:none}
-      .container{padding:14px}
-    }
-
-    /* gears animation */
-    @keyframes spin-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    .gear-rot{animation:spin-slow 24s linear infinite}
-    .gear-rot-rev{animation:spin-slow 20s linear infinite reverse}
-
-    /* micro interactions */
-    .logo-mark span{color:var(--accent-tvaran)}
-
-  </style>
+  <title>SAE MNIT — Tvaran & RavenCrew</title>
+  <meta name="description" content="SAE MNIT - Society of Automotive Engineers, MNIT Jaipur. Student motorsport team: design, build & race." />
+  <meta property="og:title" content="SAE MNIT — Tvaran & RavenCrew"/>
+  <meta property="og:description" content="Student motorsport team — design, build & race."/>
+  <meta property="og:image" content="assets/images/tvaran logo square.jpg"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Roboto for body, and a condensed display font for robot look; you can replace display with custom later -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header class="container">
-    <div class="nav">
-      <div class="brand">
-        <div class="logo-circle">
-          <div class="logo-mark">SAE<br/><span>MNIT</span></div>
-        </div>
-        <div>
-          <div style="font-weight:900;letter-spacing:1px">SAE MNIT</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">Society of Automotive Engineers</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About SAE</a></li>
-          <li><a href="#vision">Vision</a></li>
-          <li><a href="#teams">Teams</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero container" id="home">
-      <div class="hero-inner">
-        <div>
-          <h1 class="hero-title">SAE MNIT</h1>
-          <div class="hero-sub">Society of Automotive Engineers — MNIT Jaipur</div>
-          <div class="tagline reveal" style="--delay:0.2s">
-            <span>We </span>
-            <span class="type-words" id="typed">Design.</span>
-            <span style="color:var(--muted);"> Build. Race.</span>
+  <!-- page-wrapper to handle SPA-like transitions -->
+  <div id="page-wrapper" class="page-fade-in">
+
+    <!-- HEADER -->
+    <header id="mainHeader" class="header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo-wrap">
+            <img src="assets/images/tvaran logo square.jpg" alt="Tvaran logo" class="logo-img">
           </div>
-          <p class="reveal" style="margin-top:18px;color:var(--muted);max-width:60%">A student-run society for vehicle design, fabrication, and motorsport engineering. We combine mechanical systems, electronics, and team spirit to design competitive formula-style cars.</p>
-          <div class="cta-row reveal" style="--delay:0.4s">
-            <button class="btn btn-primary" onclick="scrollToSection('#teams')">Explore Teams</button>
-            <button class="btn btn-ghost" onclick="scrollToSection('#about')">Learn More</button>
+          <div class="brand-text">
+            <div class="site-title"><span class="neon">SAE</span> MNIT</div>
+            <div class="site-sub">Society of Automotive Engineers — MNIT Jaipur</div>
           </div>
         </div>
 
-        <div class="preview-card">
-          <div class="gear-wrap">
-            <!-- rotating gears background (SVG inline) -->
-            <svg class="gear-svg gear-rot" width="360" height="360" viewBox="0 0 100 100" style="left:-40px;top:-40px">
-              <g fill="none" stroke="#fff" stroke-width="1">
-                <path d="M50 20 L54 24 L59 24 L63 20 L67 22 L69 26 L73 27 L76 31 L76 36 L80 40 L80 45 L77 49 L78 54 L76 58 L72 61 L69 66 L64 68 L60 72 L55 73 L50 76 L45 73 L40 72 L36 68 L31 66 L28 61 L24 58 L22 54 L23 49 L20 45 L20 40 L24 36 L24 31 L27 27 L31 26 L33 22 L37 20 L41 24 L46 24 Z" opacity="0.6"/>
-                <circle cx="50" cy="50" r="18" stroke-opacity="0.6"/>
-              </g>
-            </svg>
-
-            <svg class="gear-svg gear-rot-rev" width="260" height="260" viewBox="0 0 100 100" style="right:-40px;bottom:-40px">
-              <g fill="none" stroke="#fff" stroke-width="1">
-                <path d="M50 16 L55 18 L59 16 L63 18 L67 22 L70 26 L74 28 L76 33 L79 37 L79 42 L76 46 L77 51 L75 56 L72 60 L68 64 L63 66 L59 70 L54 71 L50 74 L46 71 L41 70 L36 66 L32 64 L28 60 L25 56 L23 51 L24 46 L21 42 L21 37 L24 33 L26 28 L30 26 L33 22 L37 18 L41 20 Z" opacity="0.5"/>
-                <circle cx="50" cy="50" r="14" stroke-opacity="0.6"/>
-              </g>
-            </svg>
-
-            <div style="z-index:10;text-align:center;position:relative">
-              <div style="font-weight:800;font-size:22px">Tvaran Racing</div>
-              <div style="color:var(--muted);margin-top:6px">Formula-style vehicle design & fabrication</div>
-            </div>
-            <div class="blueprint"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="container reveal">
-      <h2 class="section-title">About SAE MNIT</h2>
-      <div class="cards">
-        <div class="card" style="min-width:420px">
-          <h3 style="margin:0 0 10px">What we do</h3>
-          <p style="color:var(--muted);margin:0">SAE MNIT is a student society focused on automotive systems, vehicle design, CAD, manufacturing, electronics integration, testing, and motorsport. We mentor projects, build competition cars, and host workshops.</p>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 8px">Engineering Focus</h4>
-          <ul style="color:var(--muted);margin:0;padding-left:18px">
-            <li>Structure & Chassis Design</li>
-            <li>Drivetrain & Powertrain</li>
-            <li>Aerodynamics & Suspension</li>
-            <li>Embedded Systems & Telemetry</li>
+        <nav class="nav">
+          <ul>
+            <li><a href="#home" data-link>Home</a></li>
+            <li><a href="#about" data-link>About</a></li>
+            <li><a href="#vision" data-link>Vision</a></li>
+            <li><a href="#teams" data-link>Teams</a></li>
+            <li><a href="#projects" data-link>Projects</a></li>
+            <li><a href="#contact" data-link>Contact</a></li>
           </ul>
-        </div>
+        </nav>
+
+        <button id="menuToggle" class="hamburger" aria-label="Open menu">☰</button>
       </div>
-    </section>
+    </header>
 
-    <section id="vision" class="container reveal">
-      <h2 class="section-title">Vision & Mission</h2>
-      <div class="cards" style="margin-top:8px">
-        <div class="card">
-          <h4 style="margin:0 0 8px">Mission</h4>
-          <p style="color:var(--muted);margin:0">To educate, design and produce competitive student-built vehicles while building engineering skills through hands-on experience.</p>
+    <!-- HERO -->
+    <main>
+      <section id="home" class="hero section">
+        <!-- parallax layers -->
+        <div class="parallax">
+          <div class="parallax-layer layer-bg" style="background-image:url('assets/images/download.jpeg')" aria-hidden="true"></div>
+          <div class="parallax-layer layer-mid blueprint-overlay" aria-hidden="true"></div>
+          <div class="parallax-layer layer-fg" id="gearParticles" aria-hidden="true"></div>
         </div>
-        <div class="card">
-          <h4 style="margin:0 0 8px">Vision</h4>
-          <p style="color:var(--muted);margin:0">To be a leading university team in vehicle engineering, innovation and interdisciplinary collaboration.</p>
+
+        <div class="container hero-inner">
+          <div class="hero-left reveal">
+            <h1 class="hero-title"><span class="neon display">SAE</span> <span class="mnit">MNIT</span></h1>
+            <h2 class="hero-full">Society of Automotive Engineers — MNIT Jaipur</h2>
+            <p class="tagline"><span id="typed">Design.</span> <span class="muted">Build.</span> <span class="muted">Race.</span></p>
+            <div class="hero-cta">
+              <button class="btn primary" onclick="scrollTo('#teams')">Explore Teams</button>
+              <button class="btn ghost" onclick="scrollTo('#projects')">Projects</button>
+            </div>
+            <div class="hero-note muted">Scroll down — gears rotate as you move.</div>
+          </div>
+
+          <div class="hero-right reveal">
+            <!-- preview card with single gear and meshed gears -->
+            <div class="preview-card">
+              <!-- inline single rotating gear (controlled by CSS + JS) -->
+              <div class="gear-preview">
+                <!-- inline SVG single gear -->
+                <svg id="singleGear" class="gear gear-single" viewBox="0 0 100 100" aria-hidden="true">
+                  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                    <path d="M50 20 L55 26 L62 27 L68 22 L74 24 L78 30 L84 34 L84 42 L88 48 L86 54 L88 60 L84 66 L78 68 L72 66 L66 71 L58 72 L52 76 L44 72 L36 71 L30 66 L24 68 L18 66 L14 60 L16 54 L14 48 L18 42 L18 34 L24 30 L28 24 L34 22 L40 27 L46 26 Z" />
+                    <circle cx="50" cy="50" r="14" />
+                  </g>
+                </svg>
+
+                <!-- meshed gears (one svg) -->
+                <svg id="meshedGears" class="gear gear-meshed" viewBox="0 0 220 120" aria-hidden="true">
+                  <!-- left bigger -->
+                  <g transform="translate(70,60)">
+                    <g class="g1">
+                      <circle cx="0" cy="0" r="34" fill="none" stroke="#00aef0" stroke-width="3"/>
+                      <g stroke="#00aef0" stroke-width="2" stroke-linecap="round">
+                        <g transform="rotate(0) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(22.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(45) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(67.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(90) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(112.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(135) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(157.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(180) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(202.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(225) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(247.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(270) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(292.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(315) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                        <g transform="rotate(337.5) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                      </g>
+                    </g>
+                  </g>
+
+                  <!-- right smaller -->
+                  <g transform="translate(140,60)">
+                    <g class="g2">
+                      <circle cx="0" cy="0" r="22" fill="none" stroke="#9b5cff" stroke-width="3"/>
+                      <g stroke="#9b5cff" stroke-width="1.8" stroke-linecap="round">
+                        <g transform="rotate(0) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(30) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(60) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(90) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(120) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(150) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(180) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(210) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(240) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(270) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(300) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                        <g transform="rotate(330) translate(28,0)"><line x1="0" y1="-5" x2="0" y2="5"/></g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+
+                <!-- gear->piston assembly inline for hero -->
+                <svg id="gearPiston" class="gear gear-piston" viewBox="0 0 400 180" aria-hidden="true">
+                  <g transform="translate(90,90)">
+                    <circle cx="0" cy="0" r="34" fill="none" stroke="#00aef0" stroke-width="3"/>
+                    <g stroke="#00aef0" stroke-width="2">
+                      <g transform="rotate(0) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                      <g transform="rotate(45) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                      <g transform="rotate(90) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                      <g transform="rotate(135) translate(42,0)"><line x1="0" y1="-6" x2="0" y2="6"/></g>
+                    </g>
+                  </g>
+                  <g id="rod" transform="translate(124,90)">
+                    <rect x="0" y="-6" width="180" height="12" rx="6" fill="#1f2933"/>
+                    <g id="piston" transform="translate(180,0)">
+                      <rect x="0" y="-20" width="52" height="40" rx="6" fill="#111827" stroke="#9b5cff" stroke-width="2"/>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div class="preview-caption muted">Mechanical mockup — gear ratios sync with scroll</div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="teams" class="container reveal">
-      <h2 class="section-title">Teams</h2>
-      <p style="color:var(--muted);margin-top:6px">Click a team to view its page — each team has its own mission, members, and contacts.</p>
+      <!-- ABOUT -->
+      <section id="about" class="section container reveal">
+        <h2 class="section-title">About SAE MNIT</h2>
+        <div class="split">
+          <div class="left">
+            <p class="muted">SAE MNIT (Society of Automotive Engineers) is a student-run society focused on vehicle design, fabrication and motorsport. We mentor through CAD, manufacturing, testing and competitions.</p>
+            <div class="cards">
+              <div class="card"><strong>Engineering</strong><div class="muted">Chassis, drivetrain, aero & systems.</div></div>
+              <div class="card"><strong>Innovation</strong><div class="muted">Embedded systems, telemetry & controls.</div></div>
+              <div class="card"><strong>Growth</strong><div class="muted">Workshops, recruitment & mentorship.</div></div>
+            </div>
+          </div>
+          <div class="right">
+            <!-- animated gear assembly or piston -->
+            <div class="vector-anim">
+              <!-- re-use gear-piston but larger and with JS sync -->
+              <div class="vector-card">
+                <!-- background blueprint -->
+                <img src="assets/images/Illustration D'engrenage Avec PNG , Clipart De Processus, Stimuler, Affaires Fichier PNG et PSD para o download livre.jpeg" alt="" class="vector-bg" aria-hidden="true"/>
+                <div class="vector-overlay">
+                  <!-- small inline gears -->
+                  <svg class="small-gear" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#00aef0" stroke-width="1.4"><circle cx="50" cy="50" r="18"/><path d="M50 12 L54 18 L60 20 L66 18 L70 22 L74 26 L78 34 L78 42"/></g></svg>
+                  <svg class="small-gear" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#9b5cff" stroke-width="1.4"><circle cx="50" cy="50" r="12"/></g></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="teams-grid" style="margin-top:18px">
-        <div class="team-card" onclick="openTeam('tvaran')">
-          <div class="team-logo" style="background:linear-gradient(180deg,rgba(0,174,240,0.12),transparent);border-color:rgba(0,174,240,0.12)">
-            <!-- placeholder circular logo -->
-            <svg width="46" height="46" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-opacity="0.18" stroke-width="6"/><text x="50" y="56" font-size="18" text-anchor="middle" fill="#00aef0" font-weight="800">T</text></svg>
+      <!-- VISION -->
+      <section id="vision" class="section container reveal">
+        <h2 class="section-title">Vision</h2>
+        <div class="cards vision-cards">
+          <div class="card">
+            <h4>Precision</h4>
+            <p class="muted">Caliper & measurement-driven design.</p>
+          </div>
+          <div class="card">
+            <h4>Performance</h4>
+            <p class="muted">Optimise for speed and reliability.</p>
+          </div>
+          <div class="card">
+            <h4>Innovation</h4>
+            <p class="muted">Smart controls & telemetry integration.</p>
+          </div>
+          <div class="card">
+            <h4>Teamwork</h4>
+            <p class="muted">Interdisciplinary collaboration.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAMS -->
+      <section id="teams" class="section container reveal">
+        <h2 class="section-title">Teams</h2>
+        <p class="muted">Click a team to open its dedicated page.</p>
+
+        <div class="teams-grid">
+          <div class="team-card" data-team="tvaran" tabindex="0">
+            <div class="team-logo tvaran" aria-hidden="true">
+              <img src="assets/images/tvaran logo square.jpg" alt="Tvaran Logo"/>
+              <svg class="bg-gear" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#00aef0" stroke-width="1.6"><circle cx="50" cy="50" r="30"/></g></svg>
+            </div>
+            <div class="team-info">
+              <h4>Tvaran Racing</h4>
+              <p class="muted">Formula-style vehicle design — chassis, drivetrain & aero.</p>
+            </div>
+          </div>
+
+          <div class="team-card" data-team="raven" tabindex="0">
+            <div class="team-logo raven" aria-hidden="true">
+              <!-- generated raven placeholder -->
+              <svg class="ravenlogo" viewBox="0 0 100 100" aria-hidden="true"><g fill="none"><circle cx="50" cy="50" r="32" stroke="#9b5cff" stroke-width="3"/><text x="50" y="58" text-anchor="middle" fill="#9b5cff" font-size="36" font-weight="700">R</text></g></svg>
+              <svg class="bg-gear" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#9b5cff" stroke-width="1.6"><circle cx="50" cy="50" r="30"/></g></svg>
+            </div>
+            <div class="team-info">
+              <h4>RavenCrew</h4>
+              <p class="muted">Electronics, controls & innovation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS / GALLERY -->
+      <section id="projects" class="section container reveal">
+        <h2 class="section-title">Projects</h2>
+        <div class="gallery-wrap">
+          <div class="gallery-slider" id="gallerySlider">
+            <!-- sample images; replace with real project images -->
+            <div class="slide"><img src="assets/images/logo trial.jpg" alt="project 1"></div>
+            <div class="slide"><img src="assets/images/tvaran logo with name square frame.jpg" alt="project 2"></div>
+            <div class="slide"><img src="assets/images/logo trial.jpg" alt="project 3"></div>
+          </div>
+          <div class="gallery-controls">
+            <button id="prevSlide" aria-label="Previous">‹</button>
+            <button id="nextSlide" aria-label="Next">›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SPONSORS -->
+      <section id="sponsors" class="section container reveal">
+        <h2 class="section-title">Sponsors</h2>
+        <div class="sponsor-marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <img src="assets/images/logo trial.jpg" alt="sponsor" />
+            <img src="assets/images/tvaran logo square.jpg" alt="sponsor" />
+            <img src="assets/images/logo trial.jpg" alt="sponsor" />
+            <img src="assets/images/tvaran logo square.jpg" alt="sponsor" />
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section container reveal">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+          <div>
+            <p class="muted">For collaborations, sponsorship or join requests:</p>
+            <div class="contact-cards">
+              <div class="card"><strong>Email</strong><div class="muted">sae-mnit@example.com</div></div>
+              <div class="card"><strong>Instagram</strong><div class="muted">@sae_mnit</div></div>
+            </div>
           </div>
           <div>
-            <div class="team-name">Tvaran Racing</div>
-            <div class="team-desc">Formula-style car design | Chassis, Powertrain, Aero</div>
+            <form id="contactForm" class="form" onsubmit="submitContact(event)">
+              <input type="text" name="name" placeholder="Your name" required/>
+              <input type="email" name="email" placeholder="Your email" required/>
+              <textarea name="message" placeholder="Message" required></textarea>
+              <div style="display:flex;gap:8px;">
+                <button class="btn primary" type="submit">Send</button>
+                <button class="btn ghost" type="reset">Reset</button>
+              </div>
+            </form>
           </div>
         </div>
+      </section>
 
-        <div class="team-card" onclick="openTeam('raven')">
-          <div class="team-logo" style="background:linear-gradient(180deg,rgba(155,92,255,0.08),transparent);border-color:rgba(155,92,255,0.06)">
-            <svg width="46" height="46" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-opacity="0.12" stroke-width="6"/><text x="50" y="56" font-size="18" text-anchor="middle" fill="#9b5cff" font-weight="800">R</text></svg>
-          </div>
-          <div>
-            <div class="team-name">RavenCrew</div>
-            <div class="team-desc">Innovations, Electronics & Controls (Placeholder)</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="container reveal">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-grid" style="margin-top:12px">
-        <div>
-          <p style="color:var(--muted)">For team enquiries, sponsorships or collaborations, get in touch.</p>
-          <div style="display:flex;gap:12px;margin-top:12px">
-            <div style="padding:10px;border-radius:10px;background:var(--panel);min-width:160px">Email: <br/><strong style="color:#fff">sae-mnit@example.com</strong></div>
-            <div style="padding:10px;border-radius:10px;background:var(--panel);min-width:160px">Instagram: <br/><strong style="color:#fff">@sae_mnit</strong></div>
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div>© SAE MNIT — Built with ❤</div>
+          <div class="small-gear-footer" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="36" height="36"><g fill="none" stroke="#00aef0" stroke-width="1.4"><circle cx="50" cy="50" r="18"/></g></svg>
           </div>
         </div>
-        <div>
-          <form class="form" onsubmit="event.preventDefault();alert('Thanks! We saved your message (demo).')">
-            <input placeholder="Your name" required />
-            <input placeholder="Your email" required style="margin-top:8px"/>
-            <textarea placeholder="Message" style="margin-top:8px"></textarea>
-            <button class="btn btn-primary" style="margin-top:10px">Send</button>
-          </form>
-        </div>
-      </div>
-    </section>
+      </footer>
+    </main>
+  </div>
 
-    <footer class="container">
-      <div style="display:flex;align-items:center;justify-content:space-between">
-        <div>© SAE MNIT — something</div>
-        <div style="color:var(--muted)">Made for Tvaran & RavenCrew</div>
-      </div>
-    </footer>
-
-  </main>
-
-  <!-- TEAM PAGE MODAL / SPA VIEW -->
-  <div id="teamPage" class="team-page" aria-hidden="true">
-    <div class="team-inner container">
-      <button class="close-team" onclick="closeTeam()">Close ✕</button>
-      <div id="teamHero" class="team-hero">
-        <div style="width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,0.03);border:6px solid rgba(255,255,255,0.02)">
-          <div id="teamLogo" style="font-weight:900;font-size:28px">T</div>
-        </div>
-        <div>
-          <h2 id="teamTitle" style="margin:0;font-size:28px">Team</h2>
-          <div id="teamTag" style="color:var(--muted);margin-top:6px">Team tagline / short description</div>
-          <div id="accentBar" class="team-accent" style="background:var(--accent-tvaran);margin-top:10px"></div>
-        </div>
-      </div>
-
-      <section style="margin-top:28px">
-        <h3 style="margin:0 0 10px">About</h3>
-        <p id="teamAbout" style="color:var(--muted)">Team about text — replace with real content later.</p>
-      </section>
-
-      <section style="margin-top:18px">
-        <h3 style="margin:0 0 10px">Vision</h3>
-        <p id="teamVision" style="color:var(--muted)">Team vision — replace later.</p>
-      </section>
-
-      <section style="margin-top:18px">
-        <h3 style="margin:0 0 10px">Team Members</h3>
-        <div id="membersGrid" class="members-grid"></div>
-      </section>
-
-      <section style="margin-top:18px">
-        <h3 style="margin:0 0 10px">Contact</h3>
-        <div style="color:var(--muted)" id="teamContact">Email: <strong style="color:#fff">team@example.com</strong></div>
-      </section>
-
+  <!-- TEAM MODAL (SPA-like team pages) -->
+  <div id="teamModal" class="team-modal" aria-hidden="true">
+    <div class="team-panel">
+      <button id="closeTeam" class="close">✕</button>
+      <div id="teamContent"></div>
     </div>
   </div>
 
-  <script>
-    /* ========= Small utility & data ========= */
-    const teams = {
-      tvaran: {
-        id:'tvaran',
-        name:'Tvaran Racing',
-        logoText:'T',
-        accent:'var(--accent-tvaran)',
-        tag:'Formula-style vehicle design & fabrication',
-        about:'Tvaran is focused on chassis, powertrain and aerodynamics for competitive formula vehicles. We design, iterate and manufacture student-built cars.',
-        vision:'Design, build and race. Emphasise safety, performance and learning.',
-        contact:'tvaran@sae-mnit.example.com',
-        members:[
-          {name:'dssdxx',role:'Team Captain'},
-          {name:'sdc',role:'Chassis Lead'},
-          {name:'wsds',role:'Powertrain Lead'},
-          {name:'sijdiwi',role:'DT Lead'}
-        ]
-      },
-      raven: {
-        id:'raven',
-        name:'RavenCrew',
-        logoText:'R',
-        accent:'var(--accent-raven)',
-        tag:'Electronics, Controls & Innovation (placeholder)',
-        about:'RavenCrew focuses on embedded systems, telemetry, and control systems — integrating electronics with mechanical design.',
-        vision:'Integrate smart controls to improve vehicle reliability and performance.',
-        contact:'raven@sae-mnit.example.com',
-        members:[
-          {name:'xyzz',role:'lead 1'},
-          {name:'zbcc',role:'2 Lead'},
-          {name:'hhh',role:'lead 3'},
-          {name:'aknd',role:'lead 4'}
-        ]
-      }
-    }
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button id="closeLightbox" class="close">✕</button>
+      <img id="lightboxImg" src="" alt="Large preview">
+    </div>
+  </div>
 
-    /* ========= SPA Team page control ========= */
-    const teamPage = document.getElementById('teamPage')
-    const teamTitle = document.getElementById('teamTitle')
-    const teamTag = document.getElementById('teamTag')
-    const teamAbout = document.getElementById('teamAbout')
-    const teamVision = document.getElementById('teamVision')
-    const membersGrid = document.getElementById('membersGrid')
-    const teamContact = document.getElementById('teamContact')
-    const teamLogo = document.getElementById('teamLogo')
-    const accentBar = document.getElementById('accentBar')
-
-    function openTeam(id){
-      const data = teams[id]
-      if(!data) return
-      teamTitle.textContent = data.name
-      teamTag.textContent = data.tag
-      teamAbout.textContent = data.about
-      teamVision.textContent = data.vision
-      teamContact.innerHTML = 'Email: <strong style="color:#fff">'+data.contact+'</strong>'
-      teamLogo.textContent = data.logoText
-      accentBar.style.background = getComputedStyle(document.documentElement).getPropertyValue('--accent-tvaran')
-      if(id === 'raven') accentBar.style.background = getComputedStyle(document.documentElement).getPropertyValue('--accent-raven')
-
-      // populate members
-      membersGrid.innerHTML = ''
-      data.members.forEach(m=>{
-        const div = document.createElement('div')
-        div.className='member reveal'
-        div.innerHTML = `<div class="member-photo">${avatarSVG(m.name)}</div><div class="member-name">${m.name}</div><div class="member-role">${m.role}</div>`
-        membersGrid.appendChild(div)
-      })
-
-      teamPage.style.display = 'block'
-      document.body.style.overflow = 'hidden'
-      setTimeout(()=>{teamPage.setAttribute('aria-hidden','false')},50)
-      // reveal members after a tick
-      window.requestAnimationFrame(()=>animateReveals())
-    }
-    function closeTeam(){
-      teamPage.style.display = 'none'
-      document.body.style.overflow = ''
-      teamPage.setAttribute('aria-hidden','true')
-    }
-
-    function avatarSVG(name){
-      // simple initials avatar SVG
-      const initials = name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase()
-      return `<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#111" stop-opacity="0.1"/><stop offset="1" stop-color="#fff" stop-opacity="0.02"/></linearGradient></defs><rect width="96" height="96" rx="48" fill="url(#g)"/><text x="48" y="58" font-size="28" font-weight="800" text-anchor="middle" fill="#fff">${initials}</text></svg>`
-    }
-
-    /* ========= Scroll reveal (IntersectionObserver) ========= */
-    const reveals = document.querySelectorAll('.reveal')
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('visible')
-          io.unobserve(e.target)
-        }
-      })
-    },{threshold:0.12})
-    reveals.forEach(r=>io.observe(r))
-
-    function animateReveals(){
-      document.querySelectorAll('.reveal').forEach((el,i)=>{
-        setTimeout(()=>el.classList.add('visible'), i*80)
-      })
-    }
-
-    /* initial reveal
-    animateReveals() */
-
-    /* === typed words effect === */
-    const typed = document.getElementById('typed')
-    const words = ['Design.','Build.','Race.']
-    let wi=0,ci=0
-    function typeLoop(){
-      const w = words[wi]
-      typed.textContent = w.slice(0,ci+1)
-      ci++
-      if(ci === w.length){
-        setTimeout(()=>{ci=0;wi=(wi+1)%words.length;typeLoop()},900)
-      } else setTimeout(typeLoop,120)
-    }
-    typeLoop()
-
-    /* === simple parallax for hero and background gears === */
-    window.addEventListener('scroll',()=>{
-      const sc = window.scrollY
-      document.querySelectorAll('.gear-rot').forEach((g,idx)=>{
-        g.style.transform = `rotate(${sc*(idx+0.02)}deg)`
-      })
-      document.querySelectorAll('.gear-rot-rev').forEach((g,idx)=>{
-        g.style.transform = `rotate(${-sc*(idx+0.02)}deg)`
-      })
-    })
-
-    /* click helpers */
-    function scrollToSection(sel){
-      const el = document.querySelector(sel)
-      if(!el) return
-      el.scrollIntoView({behavior:'smooth',block:'start'})
-    }
-
-    // keyboard close for modal
-    document.addEventListener('keydown',(e)=>{if(e.key==='Escape') closeTeam()})
-
-    // accessibility: trap focus could be added later
-
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
