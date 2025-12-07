@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvaran Racing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="team-page tvaran-theme">
+    <div class="page-transition"></div>
+    <div class="bg-circuit"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <a href="index.html" class="back-link" data-page="index">← Back to Home</a>
+            </div>
+            <nav class="nav team-nav">
+                <a href="#team-about" class="nav-link active">About</a>
+                <a href="#team-vision" class="nav-link">Vision</a>
+                <a href="#team-members" class="nav-link">Team</a>
+                <a href="#team-contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Team Hero -->
+    <section class="team-hero">
+        <div class="team-hero-gear">
+            <svg class="hero-rotating-gear" viewBox="0 0 300 300">
+                <path d="M150 30 L165 70 L205 65 L220 105 L260 110 L265 150 L305 165 L280 195 L305 225 L265 240 L260 280 L220 285 L205 325 L165 320 L150 360 L135 320 L95 325 L80 285 L40 280 L35 240 L-5 225 L20 195 L-5 165 L35 150 L40 110 L80 105 L95 65 L135 70 Z" 
+                      fill="none" stroke="#00d9ff" stroke-width="3" opacity="0.3"/>
+                <circle cx="150" cy="195" r="50" fill="none" stroke="#00d9ff" stroke-width="3" opacity="0.3"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="team-hero-content">
+                <div class="team-logo-large">
+                    <img src="https://customer-assets.emergentagent.com/job_saerobotics/artifacts/x5t2d49f_tvaran%20logo%20square.jpg" alt="Tvaran Racing">
+                </div>
+                <h1 class="team-title neon-title" data-text="TVARAN RACING">TVARAN RACING</h1>
+                <p class="team-tagline">Electric. Efficient. Unstoppable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team About -->
+    <section class="team-section" id="team-about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">About Tvaran</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="team-about-content">
+                <p class="lead">Tvaran Racing is SAE MNIT's electric vehicle division, leading the charge in sustainable high-performance racing. We design and build cutting-edge electric formula cars that combine speed, efficiency, and innovation.</p>
+                <p>Our team aims to compete at national and international Formula Student competitions, showcasing our expertise in electric powertrain design, battery management systems, and advanced control algorithms. We're not just building cars; we're shaping the future of motorsport.</p>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-title">Top 10</div>
+                        <div class="achievement-desc">Formula Student India</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Vision -->
+    <section class="team-section" id="team-vision">
+        <div class="blueprint-overlay"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Our Vision</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="vision-content">
+                <div class="vision-statement">
+                    <p>To pioneer sustainable motorsport technology and inspire the next generation of electric vehicle engineers through innovation, collaboration, and relentless pursuit of excellence.</p>
+                </div>
+                <div class="focus-areas">
+                    <div class="focus-card">
+                        <h4>Powertrain Excellence</h4>
+                        <p>Advanced motor controllers and power electronics</p>
+                    </div>
+                    <div class="focus-card">
+                        <h4>Energy Efficiency</h4>
+                        <p>Optimizing battery performance and regenerative systems</p>
+                    </div>
+                    <div class="focus-card">
+                        <h4>Lightweight Design</h4>
+                        <p>Carbon fiber composites and structural optimization</p>
+                    </div>
+                    <div class="focus-card">
+                        <h4>Data Analytics</h4>
+                        <p>Real-time telemetry and performance analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members -->
+    <section class="team-section" id="team-members">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Meet The Team</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=12" alt="Team Captain">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">Evantakumar Manishkumar Bafna</h3>
+                    <p class="member-position">Team Captain</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=13" alt="Technical Lead">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">jcnaw vclc</h3>
+                    <p class="member-position">Technical Lead</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=33" alt="Powertrain Head">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">vefrcvsv</h3>
+                    <p class="member-position">Powertrain Head</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=27" alt="Battery Systems">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">vcsfsl</h3>
+                    <p class="member-position">Battery Systems</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=52" alt="Chassis Design">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">Vikvfsssssssssss</h3>
+                    <p class="member-position">Chassis Design</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=38" alt="Electronics Lead">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">vfsesr</h3>
+                    <p class="member-position">Electronics Lead</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=60" alt="Aerodynamics">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">vfeeeeeeeeeeeey</h3>
+                    <p class="member-position">Aerodynamics</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <img src="https://i.pravatar.cc/200?img=47" alt="Suspension">
+                        <div class="member-gear">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50 10 L55 25 L70 23 L73 38 L88 40 L88 55 L100 60 L93 70 L100 80 L88 85 L88 100 L73 102 L70 117 L55 115 L50 130 L45 115 L30 117 L27 102 L12 100 L12 85 L0 80 L7 70 L0 60 L12 55 L12 40 L27 38 L30 23 L45 25 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="member-name">revarfdrvd</h3>
+                    <p class="member-position">Suspension</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Contact -->
+    <section class="team-section" id="team-contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Get In Touch</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="team-contact-content">
+                <div class="contact-info-team">
+                    <div class="info-item">
+                        <h4>Email</h4>
+                        <p>tvaran@mnit.ac.in</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Social Media</h4>
+                        <div class="social-links-team">
+                            <a href="#">Instagram</a>
+                            <a href="#">LinkedIn</a>
+                            <a href="#">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Tvaran Racing - SAE MNIT</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

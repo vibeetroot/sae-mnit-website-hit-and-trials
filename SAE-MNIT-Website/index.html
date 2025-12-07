@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAE MNIT - Society of Automotive Engineers, MNIT Jaipur. Design. Build. Race.">
+    <title>SAE MNIT - Society of Automotive Engineers</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="bg-circuit"></div>
+    <div class="floating-gears"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo-container">
+                <svg class="logo-gear" width="40" height="40" viewBox="0 0 100 100">
+                    <path d="M50 10 L60 30 L80 30 L85 50 L80 70 L60 70 L50 90 L40 70 L20 70 L15 50 L20 30 L40 30 Z" 
+                          fill="none" stroke="#ffd700" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="#00d9ff" stroke-width="2"/>
+                </svg>
+                <span class="logo-text">SAE MNIT</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#vision" class="nav-link">Vision</a>
+                <a href="#teams" class="nav-link">Teams</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+           <img src="images/bg.jpg" alt="Circuit Board" class="circuit-bg">
+        </div>
+        <div class="hero-gears">
+            <svg class="gear-large" viewBox="0 0 200 200">
+                <path d="M100 20 L110 40 L130 35 L135 55 L155 55 L155 75 L170 85 L160 100 L170 115 L155 125 L155 145 L135 145 L130 165 L110 160 L100 180 L90 160 L70 165 L65 145 L45 145 L45 125 L30 115 L40 100 L30 85 L45 75 L45 55 L65 55 L70 35 L90 40 Z" 
+                      fill="none" stroke="#00d9ff" stroke-width="3" opacity="0.3"/>
+                <circle cx="100" cy="100" r="30" fill="none" stroke="#00d9ff" stroke-width="3" opacity="0.3"/>
+            </svg>
+            <svg class="gear-medium" viewBox="0 0 150 150">
+                <path d="M75 15 L82 30 L95 28 L100 43 L113 45 L115 60 L128 67 L123 80 L128 93 L115 100 L113 115 L100 117 L95 132 L82 130 L75 145 L68 130 L55 132 L50 117 L37 115 L35 100 L22 93 L27 80 L22 67 L35 60 L37 45 L50 43 L55 28 L68 30 Z" 
+                      fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                <circle cx="75" cy="75" r="20" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+            </svg>
+        </div>
+        <div class="container hero-content">
+            <div class="neon-title" data-text="SAE MNIT">SAE MNIT</div>
+            <div class="hero-subtitle">Society of Automotive Engineers – MNIT Jaipur</div>
+            <div class="hero-tagline" id="typed-text">Design. Build. Race.</div>
+            <div class="hero-blueprint"></div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">About SAE</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">The Society of Automotive Engineers (SAE) at MNIT Jaipur is a dynamic community of passionate engineers, designers, and innovators dedicated to pushing the boundaries of automotive technology.</p>
+                    <p>We aim to participate in prestigious competitions like XYZZ, where our teams design, build, and race high-performance formula cars. Our mission is to provide hands-on experience in automotive engineering, fostering innovation, teamwork, and technical excellence.</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Racing Teams</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Legacy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="mechanical-anim">
+                        <svg class="rotating-mechanism" viewBox="0 0 300 300">
+                            <!-- Meshed Gears -->
+                            <g class="gear-pair-1">
+                                <path d="M80 80 L88 95 L100 92 L105 107 L118 109 L120 124 L133 131 L128 144 L133 157 L120 164 L118 179 L105 181 L100 196 L88 193 L80 208 L72 193 L60 196 L55 181 L42 179 L40 164 L27 157 L32 144 L27 131 L40 124 L42 109 L55 107 L60 92 L72 95 Z" 
+                                      fill="none" stroke="#00d9ff" stroke-width="2" class="gear-1"/>
+                                <circle cx="80" cy="144" r="18" fill="none" stroke="#00d9ff" stroke-width="2"/>
+                            </g>
+                            <g class="gear-pair-2">
+                                <path d="M180 144 L188 159 L200 156 L205 171 L218 173 L220 188 L233 195 L228 208 L233 221 L220 228 L218 243 L205 245 L200 260 L188 257 L180 272 L172 257 L160 260 L155 245 L142 243 L140 228 L127 221 L132 208 L127 195 L140 188 L142 173 L155 171 L160 156 L172 159 Z" 
+                                      fill="none" stroke="#ffd700" stroke-width="2" class="gear-2"/>
+                                <circle cx="180" cy="208" r="18" fill="none" stroke="#ffd700" stroke-width="2"/>
+                            </g>
+                            <!-- Piston -->
+                            <g class="piston-group">
+                                <rect x="220" y="80" width="40" height="70" rx="5" fill="none" stroke="#ff6b35" stroke-width="2" class="piston"/>
+                                <line x1="240" y1="150" x2="240" y2="190" stroke="#ff6b35" stroke-width="3" class="piston-rod"/>
+                                <circle cx="240" cy="195" r="8" fill="#ff6b35" opacity="0.8"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section" id="vision">
+        <div class="blueprint-overlay"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Our Vision</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 100 100" width="60" height="60">
+                            <rect x="20" y="40" width="10" height="40" fill="#00d9ff" opacity="0.8"/>
+                            <rect x="35" y="50" width="10" height="30" fill="#00d9ff" opacity="0.8"/>
+                            <rect x="50" y="30" width="10" height="50" fill="#00d9ff" opacity="0.8"/>
+                            <rect x="65" y="45" width="10" height="35" fill="#00d9ff" opacity="0.8"/>
+                            <line x1="15" y1="80" x2="85" y2="80" stroke="#ffd700" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="vision-title">Precision</h3>
+                    <p class="vision-desc">Engineering excellence through meticulous design and testing. Every component optimized for peak performance.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 100 100" width="60" height="60">
+                            <circle cx="50" cy="50" r="30" fill="none" stroke="#ffd700" stroke-width="3"/>
+                            <path d="M 50 50 L 50 25" stroke="#00d9ff" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M 50 50 L 70 60" stroke="#ff6b35" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="vision-title">Performance</h3>
+                    <p class="vision-desc">Pushing boundaries with cutting-edge technology and innovative solutions for maximum speed and efficiency.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 100 100" width="60" height="60">
+                            <circle cx="50" cy="35" r="12" fill="#ff6b35" opacity="0.8"/>
+                            <path d="M 35 35 Q 20 50 35 65 T 50 80" stroke="#00d9ff" stroke-width="3" fill="none"/>
+                            <path d="M 65 35 Q 80 50 65 65 T 50 80" stroke="#ffd700" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="vision-title">Innovation</h3>
+                    <p class="vision-desc">Pioneering new technologies and methodologies, staying ahead in the rapidly evolving automotive industry.</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 100 100" width="60" height="60">
+                            <g class="meshed-gears-small">
+                                <circle cx="35" cy="50" r="18" fill="none" stroke="#00d9ff" stroke-width="2"/>
+                                <circle cx="65" cy="50" r="18" fill="none" stroke="#ffd700" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="vision-title">Teamwork</h3>
+                    <p class="vision-desc">Collaboration across disciplines, where every member contributes to building championship-winning machines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section class="teams-section" id="teams">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Our Teams</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Two powerhouses, one legacy of excellence</p>
+            </div>
+            <div class="teams-grid">
+                <div class="team-card tvaran-card" data-team="tvaran">
+                    <div class="team-gear-bg">
+                        <svg class="team-bg-gear" viewBox="0 0 200 200">
+                            <path d="M100 20 L110 45 L135 40 L145 65 L170 65 L175 90 L195 105 L180 120 L195 135 L175 150 L170 175 L145 175 L135 200 L110 195 L100 220 L90 195 L65 200 L55 175 L30 175 L25 150 L5 135 L20 120 L5 105 L25 90 L30 65 L55 65 L65 40 L90 45 Z" 
+                                  fill="none" stroke="#00d9ff" stroke-width="2" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <div class="team-logo">
+                       <img src="images/tvaran-logo.jpg" alt="Tvaran Racing">
+                    </div>
+                    <h3 class="team-name">Tvaran Racing</h3>
+                    <p class="team-desc">Our electric vehicle division, pioneering sustainable high-performance racing with cutting-edge EV technology.</p>
+                    <a href="tvaran.html" class="team-link" data-page="tvaran">Explore Team →</a>
+                </div>
+                <div class="team-card ravencrew-card" data-team="ravencrew">
+                    <div class="team-gear-bg">
+                        <svg class="team-bg-gear" viewBox="0 0 200 200">
+                            <path d="M100 20 L110 45 L135 40 L145 65 L170 65 L175 90 L195 105 L180 120 L195 135 L175 150 L170 175 L145 175 L135 200 L110 195 L100 220 L90 195 L65 200 L55 175 L30 175 L25 150 L5 135 L20 120 L5 105 L25 90 L30 65 L55 65 L65 40 L90 45 Z" 
+                                  fill="none" stroke="#a855f7" stroke-width="2" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <div class="team-logo raven-logo">
+                        <svg viewBox="0 0 150 150">
+                            <circle cx="75" cy="75" r="50" fill="none" stroke="#a855f7" stroke-width="3"/>
+                            <text x="75" y="85" font-family="Orbitron" font-size="45" font-weight="bold" fill="#ffd700" text-anchor="middle">R</text>
+                            <path d="M75 20 L85 35 L100 30 L105 45 L120 45 L120 60 L130 70 L120 80 L130 90 L120 100 L120 115 L105 115 L100 130 L85 125 L75 140 L65 125 L50 130 L45 115 L30 115 L30 100 L20 90 L30 80 L20 70 L30 60 L30 45 L45 45 L50 30 L65 35 Z" 
+                                  fill="none" stroke="#ffd700" stroke-width="1.5" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="team-name">RavenCrew</h3>
+                    <p class="team-desc">Our GoKart team, mastering the art of internal combustion with precision engineering.</p>
+                    <a href="ravencrew.html" class="team-link" data-page="ravencrew">Explore Team →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Our Projects</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="projects-slider">
+                <div class="slider-wrapper">
+                    <div class="project-slide">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Formula Car Design">
+                        <div class="slide-caption">Formula Car Design & CAD Modeling</div>
+                    </div>
+                </div>
+                <button class="slider-btn prev-btn">‹</button>
+                <button class="slider-btn next-btn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title glow-text">Get In Touch</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>sae@mnit.ac.in</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>MNIT Jaipur, Rajasthan</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="footer-gear" width="30" height="30" viewBox="0 0 100 100">
+                        <path d="M50 10 L58 25 L73 23 L78 38 L93 40 L93 55 L108 63 L98 75 L108 87 L93 95 L93 110 L78 112 L73 127 L58 125 L50 140 L42 125 L27 127 L22 112 L7 110 L7 95 L-8 87 L2 75 L-8 63 L7 55 L7 40 L22 38 L27 23 L42 25 Z" 
+                              fill="none" stroke="#00d9ff" stroke-width="2"/>
+                    </svg>
+                    <span>SAE MNIT</span>
+                </div>
+                <p class="footer-text">© 2025 SAE MNIT. Design. Build. Race.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
